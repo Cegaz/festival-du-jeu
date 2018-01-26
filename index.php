@@ -22,7 +22,6 @@ session_start();
 	</canvas>
 
 <script src="jquery-3.3.1.min.js"></script>
-<script src="js.cookie.js"></script>
 <script src="script.js"></script>
 <script src="firework/firework.js"></script>
 </body>

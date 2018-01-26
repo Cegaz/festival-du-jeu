@@ -16,12 +16,9 @@ session_start();
 		var_dump($_COOKIE);
 		?>
 	</p>
-	<button><a href="index.php">RETOUR AU COMPTEUR</a></button>
+	<a href="index.php"><button>RETOUR AU COMPTEUR</button></a>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
-<script src="js.cookie.js"></script>
+<script src="jquery-3.3.1.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
