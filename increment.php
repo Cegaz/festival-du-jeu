@@ -8,5 +8,3 @@
 	}
 
 	echo $_COOKIE['counter'];
-
-?>

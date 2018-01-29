@@ -9,6 +9,7 @@ session_start();
   <meta charset="utf-8" />
   <link href="style.css" rel="stylesheet"></style>
   <link href="firework/fireworks.css" rel="stylesheet"></style>
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet"> 
 </head>
 
 <body id="body">

@@ -21,11 +21,7 @@ $(document).ready(function() {
 
             if(e.ctrlKey == true) { // touche ctrl
 
-                if(e.which == 105) { // touche i
-                    // affiche les stats
-                    window.location.replace("stats.php");
-
-                } else if (e.which == 111) { // touche o (la lettre)
+                if(e.which == 111) { // touche o (la lettre)
                     // remet le compteur à zéro
 
                     $.get(
@@ -40,16 +36,19 @@ $(document).ready(function() {
                 } else if (e.which == 13) { // touche entrée
                     // permet d'entrer un compte manuellement
 
-                    /*$.post(
-                        "manual_counter.php",
+                    var promptVal = prompt('nouvelle valeur du compteur :', 'ici');
+
+                    $.post(
+                        "set_counter.php",
                         {
-                            count : prompt('nouvelle valeur du compteur :', 'ici');
+                            newCount : promptVal
                         },
                         function(data) {
-                            $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+                            console.log(data);
+                            //$("#counter").replaceWith("<span id='counter'>"+data+"</span>");
                         },
                         'text'
-                    );*/
+                    );
 
                 }
             } else if (e.which == 8) { // touche retour arrière
@@ -60,7 +59,7 @@ $(document).ready(function() {
             // +1 au compteur
 
                 $.get(
-                    "add_to_counter.php",
+                    "increment.php",
                     false,
                     function(data) {
                         $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
@@ -69,5 +68,11 @@ $(document).ready(function() {
                 );
             }
         });
+
+        setInterval(function(){
+            $.get(
+                "save_stats.php",
+            );
+        }, 10000);
     }
 });
