@@ -16,9 +16,12 @@ $(document).ready(function() {
                 clearTimeout(timer);
 
             }*/
+            
             // scintille tous les multiples de 10
             if(counter % 10 == 0 & counter != 0) {
-                document.getElementById("body").className="blink";
+                $("#body").addClass("blink");
+            } else {
+                $("#body").removeClass("blink");
             }
 
             if(e.ctrlKey == true) { // touche ctrl
