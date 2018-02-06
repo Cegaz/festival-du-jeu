@@ -16,7 +16,7 @@ $(document).ready(function() {
                 clearTimeout(timer);
 
             }*/
-            
+
             // scintille tous les multiples de 10
             if(counter % 10 == 0 & counter != 0) {
                 $("#body").addClass("blink");
@@ -59,6 +59,13 @@ $(document).ready(function() {
             } else if (e.which == 8) { // touche retour arrière
              // revient à la dernière valeur sauvegardée (avant retour à zéro, donc)
 
+                $.get("cancel_init_counter.php",
+                    false,
+                    function(data) {
+                        $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+                    },
+                    'text'
+                );
 
             } else {
             // +1 au compteur
