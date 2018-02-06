@@ -7,4 +7,4 @@
 		setcookie('counter', $newCount, time() + 86400 * 30);
 	}
 
-	echo $_COOKIE['counter'];
+	echo $_COOKIE['counter']+1;

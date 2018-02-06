@@ -7,15 +7,17 @@ $(document).ready(function() {
         $(document).keypress(function(e) {
             e.preventDefault();
 
-            var counter = $('#counter').text();
+            var counter = parseInt($('#counter').text()) + 1;
 
-            // feu d'artifice tous les multiples de 20 (décalage de 1 entre affichage et cookie)
-            /*if(counter % 20 == 1 && counter != 0) {
+            //feu d'artifice tous les multiples de 20
+            /*if(counter % 20 == 0 && counter != 0) {
                 $('h1').addClass('thousand');
-                firework();
+                var timer = firework();
+                clearTimeout(timer);
+
             }*/
             // scintille tous les multiples de 10
-            if(counter % 10 == 9 & counter != 0) {
+            if(counter % 10 == 0 & counter != 0) {
                 document.getElementById("body").className="blink";
             }
 
@@ -45,7 +47,7 @@ $(document).ready(function() {
                         },
                         function(data) {
                             console.log(data);
-                            //$("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+                            $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
                         },
                         'text'
                     );
@@ -73,6 +75,6 @@ $(document).ready(function() {
             $.get(
                 "save_stats.php",
             );
-        }, 10000);
+        }, 1000 * 3600); // en millisecondes
     }
 });
