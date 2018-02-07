@@ -9,19 +9,26 @@ $(document).ready(function() {
 
             var counter = parseInt($('#counter').text()) + 1;
 
-            //feu d'artifice tous les multiples de 20
-            /*if(counter % 20 == 0 && counter != 0) {
-                $('h1').addClass('thousand');
-                var timer = firework();
-                clearTimeout(timer);
+            function removeClassPyro() {
+                $('body').removeClass('pyro');
+            }
 
-            }*/
+            function removeClassBlink() {
+                $('body').removeClass('blink');
+            }
+
+
+            //feu d'artifice tous les multiples de 100
+            if(counter % 100 == 0 && counter != 0) {
+                $('body').addClass('pyro');
+                setTimeout(removeClassPyro, 8000); // dure 5 secondes
+            }
 
             // scintille tous les multiples de 10
-            if(counter % 10 == 0 & counter != 0) {
-                $("#body").addClass("blink");
+            else if(counter % 10 == 0 & counter != 0) {
+                $('body').addClass("blink");
             } else {
-                $("#body").removeClass("blink");
+                setTimeout(removeClassBlink, 5000);
             }
 
             if(e.ctrlKey == true) { // touche ctrl
@@ -85,6 +92,6 @@ $(document).ready(function() {
             $.get(
                 "save_stats.php",
             );
-        }, 1000 * 3600); // en millisecondes
+        }, 1000 * 3600/2); // en millisecondes
     }
 });

@@ -8,11 +8,12 @@ session_start();
 	<title>Festival du jeu - compteur</title>
   <meta charset="utf-8" />
   <link href="style.css" rel="stylesheet"></style>
-  <link href="firework/fireworks.css" rel="stylesheet"></style>
+  <link href="firework.css" rel="stylesheet"></style>
   <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet"> 
 </head>
 
-<body id="body">
+<body>
+	<div class="before"></div>
 
 	<h1>
 		<span id="counter">
@@ -21,6 +22,8 @@ session_start();
 
 	<canvas id="canvas">
 	</canvas>
+
+	<div class="after"></div>
 
 <script src="jquery-3.3.1.min.js"></script>
 <script src="script.js"></script>

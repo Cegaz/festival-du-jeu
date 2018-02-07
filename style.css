@@ -61,19 +61,9 @@ h1{
 	background-color: #ddbb23;
 	animation-name: blinking;
 	animation-duration: 2s;
+	animation-iteration-count: 2;
 }
 a{
 	text-decoration: none;
 	color: inherit;
-}
-@keyframes thousand{
-	from {visibility: visible;}
-	to {visibility: hidden;}
-}
-.thousand{
-	color: #ddbb23;
-	animation-name: thousand;
-	animation-duration: 1s;
-	animation-timing-function: linear;
-	animation-iteration-count: infinite;
 }
