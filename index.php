@@ -15,6 +15,14 @@ session_start();
 <body>
 	<div class="before"></div>
 
+	<div class="icon">
+		<img src="FDJV-logo-fff.png" width="200px" onclick="toggleMenu()">
+		<div id="menu">
+			<a href="#" class="item" onclick="resetCounter()">Compteur à zéro</a><br>
+			<a href="#" class="item" onclick="setCounter()">Entrer une valeur</a>
+		</div>
+	</div>
+
 	<h1>
 		<span id="counter">
 		</span>
@@ -25,8 +33,9 @@ session_start();
 
 	<div class="after"></div>
 
+
 <script src="jquery-3.3.1.min.js"></script>
 <script src="script.js"></script>
-<script src="firework/firework.js"></script>
+<!-- <script src="firework/firework.js"></script> -->
 </body>
 </html>

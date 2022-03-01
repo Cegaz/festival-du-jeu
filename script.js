@@ -1,3 +1,43 @@
+function toggleMenu() {
+    $('#menu').toggle();
+}
+
+function resetCounter() {
+    if (confirm('On remet vraiment le compteur à zéro ?')) {
+
+        $.get(
+            "init_counter.php",
+            false,
+            function(data) {
+                $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+                $('#menu').hide();
+            },
+            'text'
+        );        
+    } else {
+        $('#menu').hide();        
+    }
+
+}
+
+function setCounter() {
+    var promptVal = prompt('nouvelle valeur du compteur :', 'ici');
+
+    $.post(
+        "set_counter.php",
+        {
+            newCount : promptVal
+        },
+        function(data) {
+            $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+            $('#menu').hide();
+        },
+        'text'
+    );
+
+}
+
+
 $(document).ready(function() {
 
     if (!navigator.cookieEnabled) {
@@ -6,6 +46,8 @@ $(document).ready(function() {
 
         $(document).keypress(function(e) {
             e.preventDefault();
+
+            $('#menu').hide();
 
             var counter = parseInt($('#counter').text()) + 1;
 
@@ -31,61 +73,17 @@ $(document).ready(function() {
                 setTimeout(removeClassBlink, 5000);
             }
 
-            if(e.ctrlKey == true) { // touche ctrl
 
-                if(e.which == 111) { // touche o (la lettre)
-                    // remet le compteur à zéro
-
-                    $.get(
-                        "init_counter.php",
-                        false,
-                        function(data) {
-                            $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
-                        },
-                        'text'
-                    );
-
-                } else if (e.which == 13) { // touche entrée
-                    // permet d'entrer un compte manuellement
-
-                    var promptVal = prompt('nouvelle valeur du compteur :', 'ici');
-
-                    $.post(
-                        "set_counter.php",
-                        {
-                            newCount : promptVal
-                        },
-                        function(data) {
-                            console.log(data);
-                            $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
-                        },
-                        'text'
-                    );
-
-                }
-            } else if (e.which == 8) { // touche retour arrière
-             // revient à la dernière valeur sauvegardée (avant retour à zéro, donc)
-
-                $.get("cancel_init_counter.php",
-                    false,
-                    function(data) {
-                        $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
-                    },
-                    'text'
-                );
-
-            } else {
             // +1 au compteur
-
-                $.get(
-                    "increment.php",
-                    false,
-                    function(data) {
-                        $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
-                    },
-                    'text'
-                );
-            }
+            $.get(
+                "increment.php",
+                false,
+                function(data) {
+                    $("#counter").replaceWith("<span id='counter'>"+data+"</span>");
+                },
+                'text'
+            );
+        
         });
 
         setInterval(function(){
